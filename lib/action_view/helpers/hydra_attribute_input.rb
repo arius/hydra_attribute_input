@@ -26,6 +26,8 @@ class ActionView::Helpers::FormBuilder
       send("#{HydraAttributeInput::BASIC_DATATYPE_TO_INPUT_MAPPING[hydra_attribute.backend_type.to_sym]}", hydra_attribute.name, options )
     elsif hydra_attribute.backend_type == "boolean"
       check_box(hydra_attribute.name, options)
+    elsif hydra_attribute.backend_type == "datetime"
+      calendar_date_select hydra_attribute.name, options.merge(value: object.send(hydra_attribute.name).nil? ? "" : I18n.l(object.send(hydra_attribute.name)))
     elsif hydra_attribute.backend_type == "polymorphic_association"
       select("#{hydra_attribute.name}_id", [nil] + options[:collection].map{|c| [c.send(options[:method_for_name]), c.id]}, options.except("method_for_name").except("collection")) <<
       hidden_field("#{hydra_attribute.name}_type", value: (options[:class_name] || options[:collection].first.try(:class).try(:to_s)))

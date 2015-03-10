@@ -4,8 +4,7 @@ module HydraAttributeInput
     string: :text_field,
     integer: :number_field,
     float: :number_field,
-    decimal: :number_field,
-    datetime: :text_field
+    decimal: :number_field
   }.freeze
   
 end
