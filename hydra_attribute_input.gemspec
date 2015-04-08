@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'hydra_attribute_input'
-  s.version     = '0.0.5'
+  s.version     = '0.0.6'
   s.date        = '2014-12-05'
   s.summary     = "hydra_attribute_input!"
   s.description = "Input for hydra attributes"

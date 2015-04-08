@@ -52,7 +52,7 @@ class ActionView::Helpers::FormBuilder
       r = ""
       if options[:with_add]
         r << button_tag(I18n.t("txt.add"), id: "#{hydra_attribute.name.parameterize}_button", type: :button, style: "float: right") <<
-        text_field_tag("#{hydra_attribute.name}_new_value", "", style: "float: right") <<
+        text_field_tag("#{hydra_attribute.name}_new_value", "", id: "#{hydra_attribute.name.parameterize}_new_value", style: "float: right") <<
         "
           <script>
           $(function(){
