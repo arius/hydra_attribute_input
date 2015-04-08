@@ -51,14 +51,14 @@ class ActionView::Helpers::FormBuilder
 
       r = ""
       if options[:with_add]
-        r << button_tag(I18n.t("txt.add"), id: "#{hydra_attribute.name}_button", type: :button, style: "float: right") <<
+        r << button_tag(I18n.t("txt.add"), id: "#{hydra_attribute.name.gsub(" ","_")}_button", type: :button, style: "float: right") <<
         text_field_tag("#{hydra_attribute.name}_new_value", "", style: "float: right") <<
         "
           <script>
           $(function(){
-            $('##{hydra_attribute.name}_button').click(function() {
-                var $select = $('##{"#{hydra_attribute.name}_select_id"}'),
-                    $input = $('##{hydra_attribute.name}_new_value'),
+            $('##{hydra_attribute.name.gsub(" ","_")}_button').click(function() {
+                var $select = $('##{"#{hydra_attribute.name.gsub(" ","_")}_select_id"}'),
+                    $input = $('##{hydra_attribute.name.gsub(" ","_")}_new_value'),
                     value = $.trim($input.val()),
                     $opt = $('<option />', {
                         value: value,
@@ -77,7 +77,7 @@ class ActionView::Helpers::FormBuilder
         </script>
         ".html_safe
       end
-      r << select(hydra_attribute.name, select_values, options.except("method_for_name").except("collection"), {style: "width: 60%", multiple: options[:multiple], id: "#{hydra_attribute.name}_select_id"})
+      r << select(hydra_attribute.name, select_values, options.except("method_for_name").except("collection"), {style: "width: 60%", multiple: options[:multiple], id: "#{hydra_attribute.name.gsub(" ","_")}_select_id"})
       r.html_safe
     else
       "#{hydra_attribute.name} - #{hydra_attribute.backend_type}"
